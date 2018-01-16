@@ -1,4 +1,4 @@
-package com.boto.onlineshop_backend;
+package com.boto.onlineshopbackend;
 
 /**
  * Hello world!

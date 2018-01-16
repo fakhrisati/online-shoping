@@ -16,6 +16,12 @@
 	</properties>
 
 	<dependencies>
+	<!--onlineshop-backend -->
+	<dependency>
+	<groupId>com.boto</groupId>
+  <artifactId>onlineshop-backend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+	</dependency>
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<dependency>
 			<groupId>javax</groupId>

@@ -6,9 +6,15 @@ switch(menu){
     case 'contact':
     $('#Contact').addClass('active');
     break;
-    default:
+    case 'all Products':
+    	 $('#listProducts').addClass('active');
+    break;
     case 'home':
-    $('#Home').addClass('active');
+   	 $('#Home').addClass('active');
+   break;
+    default:
+    
+    $('#a_'+menu).addClass('active');
     break;
 
 

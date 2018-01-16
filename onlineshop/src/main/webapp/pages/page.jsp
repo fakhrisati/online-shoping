@@ -63,6 +63,20 @@
 
 
 
+
+
+          <!-- load on listOfProduct page  -->
+		<c:if test="${isAllProducts == true or isCategoryProducts == true }">
+			<%@include file="listproducts.jsp"%>
+
+		</c:if>
+		<!-- load on listOfProduct page -->
+
+
+
+
+
+
 		<!-- Footer -->
 
 
