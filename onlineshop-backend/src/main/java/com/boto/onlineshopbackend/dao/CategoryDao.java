@@ -7,6 +7,9 @@ import com.boto.onlineshopbackend.dto.Category;
 public interface CategoryDao {
 	
 	List<Category> list ();
-	Category getbyid(int id);
+	Category getbyid(Integer id);
+	Boolean add (Category category);
+	Boolean update (Category category);
+	Boolean delete (Category category);
  
 }

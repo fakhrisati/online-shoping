@@ -19,6 +19,8 @@
 <!-- theme CSS -->
 <link href="${css}/bootstrap-letra-css-theme.css" rel="stylesheet" />
 
+<!-- theme CSS -->
+<link href="${css}/dataTables.bootstrap4.css " />
 
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet" />
@@ -27,6 +29,7 @@
 
 <script>
 	window.menu = '${title}';
+	window.contextroot ='${contextRoot}';
 </script>
 </head>
 
@@ -39,6 +42,7 @@
 	<!-- end Navigation -->
 
 	<div class="wrapper">
+	
 		<div class=""></div>
 		<!-- load on home page  -->
 		<c:if test="${ishome == true }">
@@ -63,8 +67,6 @@
 
 
 
-
-
           <!-- load on listOfProduct page  -->
 		<c:if test="${isAllProducts == true or isCategoryProducts == true }">
 			<%@include file="listproducts.jsp"%>
@@ -75,6 +77,15 @@
 
 
 
+        
+          <!-- load onsingleProduct page  -->
+		<c:if test="${isViewProduct == true}">
+			<%@include file="singleProduct.jsp"%>
+
+		</c:if>
+		<!-- load on singleProduct page -->
+
+
 
 
 		<!-- Footer -->
@@ -83,8 +94,11 @@
 		<%@include file="./share/footer.jsp"%>
 
 		<!-- end Footer -->
-		<!-- Bootstrap core JavaScript -->
+		<!-- JavaScript files -->
 		<script src="${js}/jquery.js"></script>
+		
+		<script src="${js}/jquery.dataTables.js"></script>
+		<script src="${js}/dataTables.bootstrap4.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
 		<!-- self js file -->
 		<script src="${js}/myapp.js"></script>

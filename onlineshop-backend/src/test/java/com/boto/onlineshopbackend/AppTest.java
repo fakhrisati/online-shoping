@@ -1,4 +1,4 @@
-package com.boto.onlineshop_backend;
+package com.boto.onlineshopbackend;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

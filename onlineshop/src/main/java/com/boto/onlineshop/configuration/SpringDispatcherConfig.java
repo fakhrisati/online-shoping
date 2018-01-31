@@ -15,7 +15,9 @@ public class SpringDispatcherConfig implements WebApplicationInitializer {
 		AnnotationConfigWebApplicationContext Contianer =	new AnnotationConfigWebApplicationContext();
 		Contianer.register(SpringConfig.class);
 		Contianer.setServletContext(servletContext);
-		Dynamic servlet = servletContext.addServlet("spring",new DispatcherServlet(Contianer));
+		DispatcherServlet dispatcherServlet = new DispatcherServlet(Contianer);
+		dispatcherServlet.setThrowExceptionIfNoHandlerFound(true);
+		Dynamic servlet = servletContext.addServlet("spring",dispatcherServlet);
 		servlet.addMapping("/");
 		servlet.setLoadOnStartup(1);
 		

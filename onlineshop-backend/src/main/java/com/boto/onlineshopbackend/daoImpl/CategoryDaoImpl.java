@@ -3,55 +3,58 @@ package com.boto.onlineshopbackend.daoImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.boto.onlineshopbackend.dao.CategoryDao;
 import com.boto.onlineshopbackend.dto.Category;
+
 @Repository("categoryDao")
+@Transactional
 public class CategoryDaoImpl implements CategoryDao {
-	private static List<Category> catogries = new ArrayList<Category>();
-	static{
-		Category category = new Category();
-		category.setId(1);
-		category.setName("Television");
-		category.setDescription("my name");
-	    category.setActive(true);
-        category.setImgUrl("a.png");
-        
-        Category category2 = new Category();
-        category2.setId(2);
-		category2.setName("Moblie");
-		category2.setDescription("my name2");
-	    category2.setActive(true);
-        category2.setImgUrl("a2.png");
-        
-        Category category3 = new Category();
-        category3.setId(3);
-		category3.setName("Laptop");
-		category3.setDescription("my name2");
-	    category3.setActive(true);
-        category3.setImgUrl("a2.png");
-        
-        
-        catogries.add(category);
-        catogries.add(category2);
-        catogries.add(category3);
-	}
 
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+
+	@SuppressWarnings("unchecked")
 	public List<Category> list() {
-		return catogries;
-	
+		
+		return 	(List<Category>) hibernateTemplate.findByNamedQueryAndNamedParam("Category.findallActive", "ACTIVE", true);
+
 	}
 
-	public Category getbyid(int id) {
-		//enhanced for loop 
-		for (Category category : catogries) {
-		if( category.getId() == id) 
-			return category;
-
-		}
-		return null;
+	/*
+	 * get single record by id 
+	 * */
+	public Category getbyid(Integer id) {
 		
+		return hibernateTemplate.get(Category.class, id);
+
+	}
+
+	public Boolean add(Category category) {
+
+		try {
+			hibernateTemplate.persist(category);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public Boolean update(Category category) {
+		hibernateTemplate.update(category);
+		return true;
+	}
+
+	public Boolean delete(Category category) {
+		category.setActive(false);
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }
